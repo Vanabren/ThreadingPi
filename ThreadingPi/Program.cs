@@ -25,6 +25,7 @@ namespace ThreadingPi
 
             Stopwatch sw = new Stopwatch(); // Used to track time taken for the calculations and such
 
+
             Console.WriteLine("How many dart throws per thread?");
             dartThrowsPerThread = Convert.ToInt32(Console.ReadLine());
 
@@ -45,6 +46,9 @@ namespace ThreadingPi
                 Thread.Sleep(16);
             }
 
+            // Starts Stopwatch for time calculation of thread processes
+            sw.Start();
+
             // Loops over each thread in the thread List and tells Main() to wait till they're finished
             foreach(Thread x in threads) 
             {
@@ -61,7 +65,11 @@ namespace ThreadingPi
             // ** Multiply by 4.0 to actually get a double result. Without the decimal, you just get an integer in return.
             double piEval = (4.0 * (dartsLanded) / (numThreads * dartThrowsPerThread));
 
+            // Stops Stopwatch
+            sw.Stop();
+
             Console.WriteLine("Evaluation of Pi = " + piEval);
+            Console.WriteLine("Time Taken: " + sw.Elapsed);
 
             Console.WriteLine("\nPress a key to exit...");
             Console.ReadKey();
