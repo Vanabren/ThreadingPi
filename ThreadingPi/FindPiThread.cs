@@ -13,7 +13,7 @@ namespace ThreadingPi
         private int numDartsLanded = 0;
         private Random rand;
 
-        FindPiThread(int dartsToThrow)
+        public FindPiThread(int dartsToThrow)
         {
             rand = new Random();
             numDartsToThrow = dartsToThrow;
